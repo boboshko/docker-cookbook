@@ -1,0 +1,34 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: home-assistant
+    restart: unless-stopped
+
+    ports:
+      - "${HOME_ASSISTANT_EXTERNAL_PORT:-8123}:8123"
+
+    environment:
+      - TZ=${TZ:-Europe/Moscow}
+
+    volumes:
+      - home_assistant_config:/config
+      - home_assistant_data:/data
+      - /etc/localtime:/etc/localtime:ro
+
+    networks:
+      - home-assistant
+
+volumes:
+  home_assistant_config:
+    external: true
+    name: home-assistant-config
+
+  home_assistant_data:
+    external: true
+    name: home-assistant-data
+
+networks:
+  home-assistant:
+    external: true
+    name: home-assistant
+    driver: bridge
