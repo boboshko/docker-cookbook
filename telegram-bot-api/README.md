@@ -4,6 +4,10 @@ Local Telegram bot API using an **unofficial** Docker image by [aiogram](https:/
 
 ## Prerequisites
 
+### Telegram
+
+Go to your [account](https://my.telegram.org) on the Telegram website and create an application in the **API development tools** section.
+
 ### Docker
 
 Create a network for the container:
@@ -17,10 +21,6 @@ Create volumes for the container:
 ```bash
 sudo docker volume create telegram-bot-api-data && sudo docker volume create telegram-bot-api-temp
 ```
-
-### Telegram
-
-Go to your [account](https://my.telegram.org) on the Telegram website and create an application in the **API development tools** section.
 
 ## Configuration
 
